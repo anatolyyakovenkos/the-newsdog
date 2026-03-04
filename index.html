@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>literally just max</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .grain {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      z-index: 999;
+    }
+
+    .container {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+
+    .title {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #555;
+      font-family: 'Space Mono', monospace;
+      margin-bottom: 64px;
+      letter-spacing: 1px;
+    }
+
+    .divider {
+      width: 32px;
+      height: 2px;
+      background: #333;
+      margin: 48px 0;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .body-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #999;
+      font-weight: 300;
+    }
+
+    .body-text strong {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .body-text .highlight {
+      color: #c8a46e;
+      font-weight: 400;
+    }
+
+    .dog-frame {
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 340px;
+      border: 1px solid #1a1a1a;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 48px auto;
+      background: #0e0e0e;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dog-frame .placeholder {
+      font-size: 120px;
+      opacity: 0.9;
+      user-select: none;
+    }
+
+    .dog-frame .label {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: #444;
+      letter-spacing: 2px;
+    }
+
+    .manifesto {
+      border-left: 2px solid #1f1f1f;
+      padding-left: 24px;
+      margin: 48px 0;
+    }
+
+    .manifesto p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: #777;
+      font-weight: 300;
+    }
+
+    .manifesto p + p {
+      margin-top: 16px;
+    }
+
+    .era-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+    }
+
+    .era-list li {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: #555;
+      padding: 8px 0;
+      border-bottom: 1px solid #141414;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .era-list li .name { color: #888; }
+    .era-list li .note { color: #333; font-style: italic; }
+
+    .bullpost-banner {
+      margin: 64px 0;
+      padding: 40px 32px;
+      border: 1px solid #1a1a1a;
+      border-radius: 4px;
+      text-align: center;
+      background: linear-gradient(180deg, #0e0e0e 0%, #0a0a0a 100%);
+    }
+
+    .bullpost-banner .big {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .bullpost-banner .sub {
+      font-size: 13px;
+      color: #444;
+      margin-top: 12px;
+      font-weight: 300;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 32px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .stat .number {
+      font-family: 'Space Mono', monospace;
+      font-size: 28px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .stat .label {
+      font-size: 12px;
+      color: #444;
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 64px 0 32px;
+      border-top: 1px solid #111;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: #2a2a2a;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .links {
+      display: flex;
+      gap: 24px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: #444;
+      text-decoration: none;
+      letter-spacing: 1px;
+      padding: 10px 20px;
+      border: 1px solid #1a1a1a;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .links a:hover {
+      color: #fff;
+      border-color: #333;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.25s; }
+    .fade-in:nth-child(3) { animation-delay: 0.4s; }
+    .fade-in:nth-child(4) { animation-delay: 0.55s; }
+    .fade-in:nth-child(5) { animation-delay: 0.7s; }
+    .fade-in:nth-child(6) { animation-delay: 0.85s; }
+    .fade-in:nth-child(7) { animation-delay: 1.0s; }
+    .fade-in:nth-child(8) { animation-delay: 1.15s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <div class="container">
+    <div class="fade-in">
+      <h1 class="title">literally just max</h1>
+      <p class="subtitle">a dog. that's it.</p>
+    </div>
+
+    <div class="dog-frame fade-in">
+      <span class="placeholder">🐕</span>
+      <span class="label">this is max</span>
+    </div>
+
+    <div class="section fade-in">
+      <p class="section-label">the problem</p>
+      <p class="body-text">
+        The market is <strong>cooked</strong>. Memecoins are impossible to buy right now.
+        Getting absolutely destroyed is the new norm. Every launch is a new meta, a new
+        narrative, a new way to overcomplicate something that used to be
+        <span class="highlight">stupidly simple</span>.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section fade-in">
+      <p class="section-label">remember when</p>
+      <p class="body-text">
+        A year ago, it was <strong>beautiful</strong>. We all made money because the
+        narratives were simple. A dog with a hat. A cat that goes pop. Normal memes
+        <strong>your grandma could understand</strong>.
+      </p>
+
+      <ul class="era-list">
+        <li><span class="name">dogwifhat</span><span class="note">just a dog with a hat</span></li>
+        <li><span class="name">popcat</span><span class="note">a cat that pops</span></li>
+        <li><span class="name">bonk</span><span class="note">bonk</span></li>
+        <li><span class="name">mog</span><span class="note">literally just a cat</span></li>
+      </ul>
+
+      <p class="body-text" style="margin-top: 24px;">
+        Simple memes. Simple money. No 47-layer meta-narratives.
+        No AI-generated insider cabals. Just <span class="highlight">vibes</span>.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section fade-in">
+      <p class="section-label">the thesis</p>
+      <div class="manifesto">
+        <p>
+          So I'm doing the only logical thing. I'm going back to basics.
+          This is <strong>Max</strong>. He's my dog. He's real. He's cute.
+          That's the whole pitch.
+        </p>
+        <p>
+          I've generated <strong>over 100 memes</strong> with this dog already.
+          I'm not stopping. I will bullpost Max until the heat death of the universe
+          or until we flip dogwifhat. Whichever comes first.
+        </p>
+        <p>
+          No roadmap. No utility. No "ecosystem."
+          Just a dog and an unhinged amount of content.
+        </p>
+      </div>
+    </div>
+
+    <div class="bullpost-banner fade-in">
+      <p class="big">bullposting starts now.</p>
+      <p class="sub">100+ memes ready. infinite more loading.</p>
+    </div>
+
+    <div class="stat-row fade-in">
+      <div class="stat">
+        <p class="number">100+</p>
+        <p class="label">memes generated</p>
+      </div>
+      <div class="stat">
+        <p class="number">1</p>
+        <p class="label">good boy</p>
+      </div>
+      <div class="stat">
+        <p class="number">0</p>
+        <p class="label">utility needed</p>
+      </div>
+    </div>
+
+    <div class="section fade-in">
+      <div class="links">
+        <a href="#">twitter</a>
+        <a href="#">telegram</a>
+        <a href="#">buy max</a>
+      </div>
+    </div>
+
+    <div class="footer fade-in">
+      <p>literally just a dog &middot; 2026</p>
+    </div>
+  </div>
+</body>
+</html>
