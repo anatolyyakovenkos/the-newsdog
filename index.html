@@ -10,8 +10,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: #0a0a0a;
-      color: #e0e0e0;
+      background: #faf7f2;
+      color: #1a1a1a;
       font-family: 'Inter', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
@@ -21,7 +21,7 @@
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
-      opacity: 0.03;
+      opacity: 0.015;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
       z-index: 999;
     }
@@ -36,7 +36,7 @@
       font-family: 'Space Mono', monospace;
       font-size: clamp(2rem, 6vw, 3.2rem);
       font-weight: 700;
-      color: #ffffff;
+      color: #1a1a1a;
       margin-bottom: 16px;
       letter-spacing: -1px;
       line-height: 1.1;
@@ -44,7 +44,7 @@
 
     .subtitle {
       font-size: 14px;
-      color: #555;
+      color: #888;
       font-family: 'Space Mono', monospace;
       margin-bottom: 64px;
       letter-spacing: 1px;
@@ -53,7 +53,7 @@
     .divider {
       width: 32px;
       height: 2px;
-      background: #333;
+      background: #d4cfc7;
       margin: 48px 0;
     }
 
@@ -66,24 +66,24 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 3px;
-      color: #444;
+      color: #999;
       margin-bottom: 20px;
     }
 
     .body-text {
       font-size: 16px;
       line-height: 1.8;
-      color: #999;
+      color: #555;
       font-weight: 300;
     }
 
     .body-text strong {
-      color: #fff;
+      color: #1a1a1a;
       font-weight: 500;
     }
 
     .body-text .highlight {
-      color: #c8a46e;
+      color: #b8860b;
       font-weight: 400;
     }
 
@@ -91,13 +91,13 @@
       width: 100%;
       aspect-ratio: 1;
       max-width: 340px;
-      border: 1px solid #1a1a1a;
+      border: 1px solid #e0dbd3;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 48px auto;
-      background: #0e0e0e;
+      background: #f5f0e8;
       position: relative;
       overflow: hidden;
     }
@@ -108,6 +108,13 @@
       user-select: none;
     }
 
+    .dog-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 7px;
+    }
+
     .dog-frame .label {
       position: absolute;
       bottom: 16px;
@@ -115,12 +122,13 @@
       transform: translateX(-50%);
       font-family: 'Space Mono', monospace;
       font-size: 12px;
-      color: #444;
+      color: #fff;
       letter-spacing: 2px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
     }
 
     .manifesto {
-      border-left: 2px solid #1f1f1f;
+      border-left: 2px solid #d4cfc7;
       padding-left: 24px;
       margin: 48px 0;
     }
@@ -128,7 +136,7 @@
     .manifesto p {
       font-size: 15px;
       line-height: 1.9;
-      color: #777;
+      color: #555;
       font-weight: 300;
     }
 
@@ -145,36 +153,36 @@
     .era-list li {
       font-family: 'Space Mono', monospace;
       font-size: 13px;
-      color: #555;
+      color: #777;
       padding: 8px 0;
-      border-bottom: 1px solid #141414;
+      border-bottom: 1px solid #e8e3db;
       display: flex;
       justify-content: space-between;
     }
 
-    .era-list li .name { color: #888; }
-    .era-list li .note { color: #333; font-style: italic; }
+    .era-list li .name { color: #444; }
+    .era-list li .note { color: #aaa; font-style: italic; }
 
     .bullpost-banner {
       margin: 64px 0;
       padding: 40px 32px;
-      border: 1px solid #1a1a1a;
+      border: 1px solid #e0dbd3;
       border-radius: 4px;
       text-align: center;
-      background: linear-gradient(180deg, #0e0e0e 0%, #0a0a0a 100%);
+      background: linear-gradient(180deg, #f5f0e8 0%, #faf7f2 100%);
     }
 
     .bullpost-banner .big {
       font-family: 'Space Mono', monospace;
       font-size: clamp(1.4rem, 4vw, 2rem);
-      color: #fff;
+      color: #1a1a1a;
       font-weight: 700;
       letter-spacing: -0.5px;
     }
 
     .bullpost-banner .sub {
       font-size: 13px;
-      color: #444;
+      color: #999;
       margin-top: 12px;
       font-weight: 300;
     }
@@ -194,13 +202,13 @@
     .stat .number {
       font-family: 'Space Mono', monospace;
       font-size: 28px;
-      color: #fff;
+      color: #1a1a1a;
       font-weight: 700;
     }
 
     .stat .label {
       font-size: 12px;
-      color: #444;
+      color: #999;
       margin-top: 4px;
       letter-spacing: 1px;
     }
@@ -208,12 +216,12 @@
     .footer {
       text-align: center;
       padding: 64px 0 32px;
-      border-top: 1px solid #111;
+      border-top: 1px solid #e0dbd3;
     }
 
     .footer p {
       font-size: 12px;
-      color: #2a2a2a;
+      color: #bbb;
       font-family: 'Space Mono', monospace;
     }
 
@@ -227,18 +235,18 @@
     .links a {
       font-family: 'Space Mono', monospace;
       font-size: 12px;
-      color: #444;
+      color: #666;
       text-decoration: none;
       letter-spacing: 1px;
       padding: 10px 20px;
-      border: 1px solid #1a1a1a;
+      border: 1px solid #d4cfc7;
       border-radius: 4px;
       transition: all 0.2s ease;
     }
 
     .links a:hover {
-      color: #fff;
-      border-color: #333;
+      color: #1a1a1a;
+      border-color: #999;
     }
 
     .fade-in {
@@ -270,7 +278,7 @@
     </div>
 
     <div class="dog-frame fade-in">
-      <span class="placeholder">🐕</span>
+      <img src="max.jpg" alt="Max">
       <span class="label">this is max</span>
     </div>
 
